@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "gramConfig",
+            "includePath": [
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/build/_deps/tinyxml2-src"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}
