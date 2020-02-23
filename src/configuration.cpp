@@ -15,7 +15,7 @@
 
 #include "gramconfig/configurable.hpp"
 
-namespace config {
+namespace gramConfig {
 
 Configuration::Configuration(const std::string &xml_filename)
     : config_filename_(xml_filename), config_document_(), file_monitor_running_(true) {
@@ -95,6 +95,7 @@ Configuration::ValueList Configuration::GetConfiguration(NameList &required_conf
 
 void Configuration::MonitorForChanges(unsigned int period_ms) {
   // Get the file modification date as a starting point
+  file_monitor_running_ = true;
   auto last_modified_date = std::filesystem::last_write_time(config_filename_);
   while (file_monitor_running_) {
     std::this_thread::sleep_for(std::chrono::milliseconds(period_ms));
@@ -109,4 +110,6 @@ void Configuration::MonitorForChanges(unsigned int period_ms) {
   }
 }
 
-}  // namespace config
+void Configuration::DisableMonitor(void) { file_monitor_running_ = false; }
+
+}  // namespace gramConfig

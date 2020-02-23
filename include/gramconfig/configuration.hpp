@@ -10,7 +10,7 @@
 #include <string>
 #include <vector>
 
-namespace config {
+namespace gramConfig {
 
 class Configurable;
 
@@ -76,6 +76,10 @@ class Configuration {
    */
   void MonitorForChanges(unsigned int period_ms);
 
+  /** Disables the monitoring loop to exit the thread
+   */
+  void DisableMonitor(void);
+
  private:
   /** List of callbacks containing a weak pointer to the callback function and the relevant NameList of configurations
    */
@@ -99,6 +103,6 @@ class Configuration {
   std::mutex callbacks_mutex_;
 };
 
-}  // namespace config
+}  // namespace gramConfig
 
 #endif  // _CONFIG_CONFIGURATION_H_

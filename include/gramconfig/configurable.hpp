@@ -5,7 +5,7 @@
 
 #include "gramconfig/configuration.hpp"
 
-namespace config {
+namespace gramConfig {
 
 class Configurable {
  public:
@@ -37,6 +37,6 @@ class Configurable {
   std::shared_ptr<void> configuration_token_;
 };
 
-}  // namespace config
+}  // namespace gramConfig
 
 #endif  // _CONFIG_CONFIGURABLE_H_
