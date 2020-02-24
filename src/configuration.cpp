@@ -6,6 +6,7 @@
 #include <filesystem>
 #include <functional>
 #include <iostream>
+#include <map>
 #include <memory>
 #include <mutex>
 #include <stdexcept>
@@ -85,8 +86,8 @@ Configuration::ValueList Configuration::GetConfiguration(NameList &required_conf
        element = element->NextSiblingElement()) {
     for (const auto &item : required_config) {
       if (item.compare(element->Value()) == 0) {
-        // Found the item, add it to the response vector and move on
-        response_config.push_back(std::pair<std::string, std::string>(item, element->GetText()));
+        // Found the item, add it to the response map and move on
+        response_config[item] = element->GetText();
       }
     }
   }

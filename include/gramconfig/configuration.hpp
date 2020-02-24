@@ -5,6 +5,7 @@
 
 #include <chrono>
 #include <functional>
+#include <map>
 #include <memory>
 #include <mutex>
 #include <string>
@@ -19,7 +20,7 @@ class Configuration {
   /** A list of configurations and values type
    * The first element in the pair is the name of the configuration, with the second element being it's string value
    */
-  typedef std::vector<std::pair<std::string, std::string>> ValueList;
+  typedef std::map<std::string, std::string> ValueList;
 
   /** A list of configuration names type
    */
