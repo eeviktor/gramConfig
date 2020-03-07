@@ -12,13 +12,13 @@ class Configurable {
   /** Constructor
    * \param configuration Reference to the configuration manager that is providing the configuration
    */
-  Configurable(Configuration &configuration) : configuration_(configuration) {}
+  Configurable(std::shared_ptr<Configuration> configuration) : configuration_(configuration) {}
 
   /** Register a number of configurations that this class needs
    * \param configurations List of configuration names
    */
   void ConfigurationRegister(const Configuration::NameList &configurations) {
-    configuration_token_ = configuration_.AddListener(configurations, *this);
+    configuration_token_ = configuration_->AddListener(configurations, *this);
   }
 
   /** Callback for configuration manager to call and update the class
@@ -29,7 +29,7 @@ class Configurable {
  private:
   /** Reference to the configuration manager that is providing the configuration
    */
-  Configuration &configuration_;
+  std::shared_ptr<Configuration> configuration_;
 
   /** Token that ensures that when this object goes out of scope, the configuration class removes it's registration
    * automatically and safely
